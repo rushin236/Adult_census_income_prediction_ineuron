@@ -1,1 +1,1 @@
-# Adult_census_income_prediction_ineuron
+# Ineuron Adult Census Income Prediction 

@@ -22,6 +22,7 @@ list_of_file = [
     "config/config.yaml",
     "templates/index.html",
     "staticFiles/index.css",
+    "dockerfile",
     "requirements.txt",
     "setup.py",
     "params.yaml",
