@@ -11,4 +11,14 @@ data_validation:
   ALL_REQUIRED_FILES: ["raw_data.csv"]
 
 data_analysis:
+  root_dir: artifacts/data_transform
   local_data_file: artifacts/data_ingestion/raw_data.csv
+  preprocessed_data_file: artifacts/data_transform/processed_data.csv
+  preprocessor_file: artifacts/data_transform/processor.joblib
+
+model_build:
+  root_dir: artifacts/model
+  preprocessed_data_file: artifacts/data_transform/processed_data.csv
+  preprocessor_file: artifacts/data_transform/processor.joblib
+  model_file: artifacts/model/model.joblib
+  model_results: artifacts/model/results.txt
