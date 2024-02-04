@@ -1,1 +1,28 @@
-params: test
+LogisticRegression:
+  penalty: ["l2"]
+  solver: ["lbfgs", "newton-cg"]
+
+KNeighborsClassifier:
+  n_neighbors: [3, 5]
+  algorithm: ["kd_tree", "brute"]
+  leaf_size: [25, 30]
+
+DecisionTreeClassifier:
+  criterion: ["gini", "entropy"]
+  max_depth: [3, 5]
+  min_samples_split: [5, 10]
+
+RandomForestClassifier:
+  n_estimators: [100]
+  criterion: ["gini", "entropy"]
+  max_depth: [3, 5]
+  min_samples_split: [5, 10]
+
+AdaBoostClassifier:
+  n_estimators: [40, 50]
+  learning_rate: [1.0, 1.1]
+
+GradientBoostingClassifier:
+  loss: ["log_loss", "deviance"]
+  min_samples_split: [5, 10]
+  min_samples_leaf: [3, 5]

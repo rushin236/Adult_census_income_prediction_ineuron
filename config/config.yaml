@@ -12,13 +12,15 @@ data_validation:
 
 data_analysis:
   root_dir: artifacts/data_transform
+  models_dir: models
   local_data_file: artifacts/data_ingestion/raw_data.csv
-  preprocessed_data_file: artifacts/data_transform/processed_data.csv
-  preprocessor_file: artifacts/data_transform/processor.joblib
+  preprocessed_data_file: artifacts/data_transform/transformed_data.csv
+  preprocessor_file: models/preprocessor.joblib
 
 model_build:
-  root_dir: artifacts/model
-  preprocessed_data_file: artifacts/data_transform/processed_data.csv
-  preprocessor_file: artifacts/data_transform/processor.joblib
-  model_file: artifacts/model/model.joblib
-  model_results: artifacts/model/results.txt
+  root_dir: artifacts/model_results
+  preprocessed_data_file: artifacts/data_transform/transformed_data.csv
+  preprocessor_file: models/preprocessor.joblib
+  model_file: models/model.joblib
+  model_results: artifacts/model_results/results.txt
+  best_params: artifacts/model_results/best_params.txt
