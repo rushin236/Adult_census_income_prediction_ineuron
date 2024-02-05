@@ -62,7 +62,9 @@ class DataAnalysis:
         X = X.drop(feat_imp[(feat_imp["Score"] < 0.05)]["Feature"], axis=1)
 
         cate_col = [col for col in cate_col if col in X.columns]
+        cate_col.remove("relationship")
         num_col = [col for col in num_col if col in X.columns]
+        [num_col.remove(col) for col in ["fnlwgt", "capital.gain"]]
 
         logger.info(
             f"Feature selection completed with selection of these columns: {cate_col + num_col}"
