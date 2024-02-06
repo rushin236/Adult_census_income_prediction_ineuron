@@ -5,13 +5,13 @@ Best Params for KNeighborsClassifier:
  {'algorithm': 'brute', 'leaf_size': 25, 'n_neighbors': 5}
 
 Best Params for DecisionTreeClassifier: 
- {'criterion': 'gini', 'max_depth': 5, 'min_samples_split': 10}
+ {'criterion': 'gini', 'max_depth': 5, 'min_samples_split': 5}
 
 Best Params for RandomForestClassifier: 
- {'criterion': 'gini', 'max_depth': 5, 'min_samples_split': 10, 'n_estimators': 100}
+ {'max_depth': 110, 'n_estimators': 60}
 
 Best Params for AdaBoostClassifier: 
- {'learning_rate': 1.0, 'n_estimators': 50}
+ {'algorithm': 'SAMME', 'learning_rate': 1.1, 'n_estimators': 50}
 
 Best Params for GradientBoostingClassifier: 
  {'loss': 'log_loss', 'min_samples_leaf': 5, 'min_samples_split': 5}

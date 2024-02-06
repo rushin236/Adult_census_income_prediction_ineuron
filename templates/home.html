@@ -1,0 +1,95 @@
+{% extends 'base.html' %}{% block content %} {% block link %}
+<link
+  rel="stylesheet"
+  href="{{ url_for('static', filename='css/home.css' ) }}"
+/>
+{% endblock %} {% block title %}
+<title>Adult Census Home</title>
+{% endblock %}
+<div id="home-content">
+  <div class="content-title">
+    <h2>Welcome to Adult Census Income Prediction</h2>
+  </div>
+  <div class="prediction-content">
+    <h3>User Input</h3>
+    <form action="/home" method="post">
+      <div class="user-inputs">
+        <div class="user_input_section_1">
+          <div class="input_section">
+            <!-- label for age -->
+            <label for="age">Enter User's age</label>
+            <input type="number" name="age" min="1" max="150" />
+          </div>
+          <div class="input_section">
+            <!-- label for education number -->
+            <label for="education.num">Years of education</label>
+            <input type="number" name="education.num" min="0" max="50" />
+          </div>
+          <div class="input_section">
+            <!-- label for work hours -->
+            <label for="hours.per.week">Work hours/week</label>
+            <input type="number" name="hours.per.week" min="1" max="150" />
+          </div>
+        </div>
+        <div class="user_input_section_2">
+          <div class="input_section">
+            <!-- label for age -->
+            <label for="marital.status">Select Marital Status</label>
+            <select
+              type="text"
+              name="marital.status"
+              placeholder="Marital Status"
+              required="required"
+            >
+              <option value="Never-married">Never-married</option>
+              <option value="Married">Married</option>
+              <option value="Divorced">Divorced</option>
+              <option value="Separated">Separated</option>
+              <option value="Widowed">Widowed</option>
+              <option value="Married-spouse-absent">
+                Married-spouse-absent
+              </option>
+              <option value="Married-AF-spouse">Married-AF-spouse</option>
+            </select>
+          </div>
+          <div class="input_section">
+            <!-- label for education number -->
+            <label for="occupation">Select Occupation</label>
+            <select
+              type="text"
+              name="occupation"
+              placeholder="Occupation"
+              required="required"
+            >
+              <option value="Prof-specialty">Professor Specialty</option>
+              <option value="Exec-managerial">Executive manager</option>
+              <option value="Machine-op-inspct">
+                Machine Operation inspection
+              </option>
+              <option value="Adm-clerical">Administration</option>
+              <option value="Craft-repair">Maintenance services</option>
+              <option value="Transport-moving">Transportation</option>
+              <option value="Handlers-cleaners">Labour work's</option>
+              <option value="Sales">Sales</option>
+              <option value="Farming-fishing">Farming-fishing</option>
+              <option value="Tech-support">Tech-support</option>
+              <option value="Protective-serv">Protective-services</option>
+              <option value="Armed-Forces">Armed-Forces</option>
+              <option value="Priv-house-serv">Private-house-services</option>
+              <option value="Other-service">Other service</option>
+            </select>
+          </div>
+        </div>
+        <div class="user_input_section_btn">
+          <div class="section_input_btn">
+            <button type="submit">Predict</button>
+          </div>
+        </div>
+      </div>
+    </form>
+    <div class="user-prediction">
+      <span>{{ user_prediction }}</span>
+    </div>
+  </div>
+</div>
+{% endblock %}

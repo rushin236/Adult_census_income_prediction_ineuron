@@ -8,7 +8,6 @@ import pandas as pd
 from sklearn.model_selection import train_test_split, GridSearchCV
 from sklearn.metrics import classification_report
 from sklearn.linear_model import LogisticRegression
-from sklearn.svm import SVC
 from sklearn.neighbors import KNeighborsClassifier
 from sklearn.naive_bayes import GaussianNB
 from sklearn.tree import DecisionTreeClassifier
@@ -81,6 +80,24 @@ class ModelBuild:
         except Exception as e:
             raise e
 
+    def evaluate_model(self, models_dict, X_test, y_test):
+        try:
+            logger.info("Models evaluation started.")
+
+            ts_results = {}
+
+            for model in models_dict.keys():
+                pred = models_dict[model].predict(X_test)
+                result = classification_report(y_test, pred, output_dict=True)
+                ts_results[model] = result
+
+            logger.info("Models evaluation completed.")
+
+            return ts_results
+
+        except Exception as e:
+            raise e
+
     def get_best_model(self, models_dict: dict, models_results: pd.DataFrame):
         best_model = models_results.sort_values("accuracy", ascending=False)[
             "models"
@@ -141,7 +158,6 @@ def fit_model(model, x, y, parameters=None):
 def get_models():
     models_dict = {
         "LogisticRegression": LogisticRegression(),
-        "SVC": SVC(),
         "KNeighborsClassifier": KNeighborsClassifier(),
         "GaussianNB": GaussianNB(),
         "DecisionTreeClassifier": DecisionTreeClassifier(),

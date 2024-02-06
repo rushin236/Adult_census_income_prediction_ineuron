@@ -24,3 +24,7 @@ model_build:
   model_file: models/model.joblib
   model_results: artifacts/model_results/results.txt
   best_params: artifacts/model_results/best_params.txt
+
+prediction:
+  preprocessor_file: models/preprocessor.joblib
+  model_file: models/model.joblib

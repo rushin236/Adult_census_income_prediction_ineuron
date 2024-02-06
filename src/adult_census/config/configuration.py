@@ -6,6 +6,7 @@ from adult_census.entity import (
     DataValidationConfig,
     DataAnalysisConfig,
     ModelBuildConfig,
+    PredictionConfig,
 )
 
 
@@ -70,3 +71,12 @@ class ConfigurationManager:
         )
 
         return model_build_config, self.params
+
+    def get_prediction_config(self) -> PredictionConfig:
+        config = self.config.prediction
+
+        prediction_config = PredictionConfig(
+            preprocessor_file=config.preprocessor_file, model_file=config.model_file
+        )
+
+        return prediction_config

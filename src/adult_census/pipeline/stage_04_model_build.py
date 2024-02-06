@@ -22,6 +22,10 @@ class ModelBuildPipeline:
             models_dict=models, X_train=train_test_set[0], y_train=train_test_set[2]
         )
         tr_results = get_report(result=tr_results)
+        ts_results = model_build.evaluate_model(
+            tr_models, X_test=train_test_set[1], y_test=train_test_set[3]
+        )
+        ts_results = get_report(result=ts_results)
         hy_models, hy_results = model_build.train_model(
             models_dict=models,
             X_train=train_test_set[0],
@@ -29,8 +33,17 @@ class ModelBuildPipeline:
             parameters=True,
         )
         hy_results = get_report(result=hy_results)
-        best_model = model_build.get_best_model(hy_models, hy_results)
+        hy_ts_results = model_build.evaluate_model(
+            hy_models, X_test=train_test_set[1], y_test=train_test_set[3]
+        )
+        hy_ts_results = get_report(hy_ts_results)
+        best_model = model_build.get_best_model(hy_models, hy_ts_results)
         model_build.save_results(
-            {"Trained Models": tr_results, "Tunned Models": hy_results}
+            {
+                "Non-Tunning Train Report": tr_results,
+                "Non-Tunning Test Report": ts_results,
+                "Hyper-Tunning Train Report": hy_results,
+                "Hyper-Tunning Test Report": hy_ts_results,
+            }
         )
         model_build.save_model(best_model)

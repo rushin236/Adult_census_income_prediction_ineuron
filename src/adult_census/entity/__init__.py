@@ -33,3 +33,9 @@ class ModelBuildConfig:
     model_file: Path
     model_results: Path
     best_params: Path
+
+
+@dataclass
+class PredictionConfig:
+    preprocessor_file: Path
+    model_file: Path
